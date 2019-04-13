@@ -9,10 +9,15 @@ public class PlayerFollowMouse : MonoBehaviour
 
     public Transform gun;
     public Transform offsetR, offsetL;
+    public Transform handR, handL;
+
     Vector3 mousePosition;
-    public float angle;
-    public bool isRight = true;
-    public bool isLeft = false;
+    float angle;
+
+    bool isRight = true;
+    bool isLeft = false;
+    public bool hasMovedR = true;
+    public bool hasMovedL = false;
 
     // Start is called before the first frame update
     void Start()
@@ -23,28 +28,13 @@ public class PlayerFollowMouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        //gun.position = Vector3.Lerp(gun.position, mousePosition, speed);
-        //gun.RotateAround(playerCharacter.position, gun.forward, angle );
-
-        /* Vector3 orbVector = Camera.main.WorldToScreenPoint(playerCharacter.position);
-         orbVector = Input.mousePosition - orbVector;
-         float angle = Mathf.Atan2(orbVector.y, orbVector.x) * Mathf.Rad2Deg;
-         Debug.Log(angle);
-
-         gun.position = playerCharacter.position + new Vector3(0.2f,0);
-         gun.rotation = Quaternion.AngleAxis(angle, Vector3.forward);*/
         findMouseAngle();
         PivotAroundPoint();
     }
 
     void FindDistance()
     {
-        if(isRight)
         Pivot.x = offsetR.position.x - gun.position.x;
-        else if (isLeft)
-        Pivot.x = offsetL.position.x - gun.position.x;
-
     }
 
     void findMouseAngle()
@@ -62,13 +52,15 @@ public class PlayerFollowMouse : MonoBehaviour
         {
             angle += 360;
         }
+        
+        //^^^^^^^^^^ find mouse angle between the mouse and the player. Don't ask how it works. 
 
-        if (angle < 80 && angle > 0 || angle > 280 && angle < 360)
+        if (angle < 80 && angle > 0 || angle > 280 && angle < 360) //check right angle
         {
             isRight = true;
             isLeft = false;
         }
-        else if (angle > 100 && angle < 180 || angle > 180 && angle < 260 )
+        else if (angle > 100 && angle < 180 || angle > 180 && angle < 260 ) //check left angle
         {
             isRight = false;
             isLeft = true;
@@ -77,22 +69,33 @@ public class PlayerFollowMouse : MonoBehaviour
 
     void PivotAroundPoint()
     {
-        gun.position += (gun.rotation * Pivot);
+        gun.position += (gun.rotation * Pivot);//pivot
 
-        gun.transform.rotation = Quaternion.Euler(0,-angle,0);
+        gun.transform.rotation = Quaternion.Euler(0,-angle,0); //rotate gun towards mouse
 
-        gun.position -= (gun.rotation * Pivot);
+        gun.position -= (gun.rotation * Pivot);//pivot
 
-        if (isRight)
+        if (isLeft && !hasMovedL)
         {
-            //gun.position = new Vector3(0.64f, gun.position.y, gun.position.z);
-           // FindDistance();
+            while (offsetL.position.x - gun.position.x <= Pivot.x)
+            {
+                gun.position += new Vector3(-0.0001f, 0, 0);
+                hasMovedL = false;
+            }
+            Debug.Log("X moved to : " + gun.position.x);
+            hasMovedL = true;
+            hasMovedR = false;
         }
-        else if (isLeft)
+        if (isRight && !hasMovedR)
         {
-
-           gun.position = new Vector3(-gun.position.x, gun.position.y, gun.position.z);
-           // FindDistance();
+            while (offsetR.position.x - gun.position.x >= 0)
+            { 
+                gun.position += new Vector3(0.0001f, 0, 0);
+                hasMovedR = false;
+            }
+            Debug.Log("X moved to : " + gun.position.x);
+            hasMovedL = false;
+            hasMovedR = true;
         }
 
         if (DebugInfo)
@@ -106,4 +109,6 @@ public class PlayerFollowMouse : MonoBehaviour
             Debug.DrawRay(gun.position + (gun.rotation * Pivot), gun.rotation * Vector3.forward, Color.blue);
         }
     }
+
+ 
 }
