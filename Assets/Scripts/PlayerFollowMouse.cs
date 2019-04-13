@@ -85,13 +85,13 @@ public class PlayerFollowMouse : MonoBehaviour
 
         if (isRight)
         {
-            gun.position = new Vector3(0.6f, gun.position.y, gun.position.z);
+            //gun.position = new Vector3(0.64f, gun.position.y, gun.position.z);
            // FindDistance();
         }
         else if (isLeft)
         {
 
-            gun.position = new Vector3(-0.6f, gun.position.y, gun.position.z);
+           gun.position = new Vector3(-gun.position.x, gun.position.y, gun.position.z);
            // FindDistance();
         }
 
