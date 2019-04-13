@@ -52,7 +52,7 @@ public class PlayerFollowMouse : MonoBehaviour
         {
             angle += 360;
         }
-        
+
         //^^^^^^^^^^ find mouse angle between the mouse and the player. Don't ask how it works. 
 
         if (angle < 80 && angle > 0 || angle > 280 && angle < 360) //check right angle
@@ -77,22 +77,13 @@ public class PlayerFollowMouse : MonoBehaviour
 
         if (isLeft && !hasMovedL)
         {
-            while (offsetL.position.x - gun.position.x <= Pivot.x)
-            {
-                gun.position += new Vector3(-0.0001f, 0, 0);
-                hasMovedL = false;
-            }
-            Debug.Log("X moved to : " + gun.position.x);
+           
             hasMovedL = true;
             hasMovedR = false;
         }
         if (isRight && !hasMovedR)
         {
-            while (offsetR.position.x - gun.position.x >= 0)
-            { 
-                gun.position += new Vector3(0.0001f, 0, 0);
-                hasMovedR = false;
-            }
+           
             Debug.Log("X moved to : " + gun.position.x);
             hasMovedL = false;
             hasMovedR = true;
