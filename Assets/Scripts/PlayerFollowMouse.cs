@@ -8,11 +8,11 @@ public class PlayerFollowMouse : MonoBehaviour
     public bool DebugInfo = true;
 
     public Transform gun;
-    public Transform offset;
-    public float speed = 10.0f;
+    public Transform offsetR, offsetL;
     Vector3 mousePosition;
     public float angle;
-    public bool hasRotated = false;
+    public bool isRight = true;
+    public bool isLeft = false;
 
     // Start is called before the first frame update
     void Start()
@@ -40,7 +40,11 @@ public class PlayerFollowMouse : MonoBehaviour
 
     void FindDistance()
     {
-        Pivot.x = offset.position.x - gun.position.x;
+        if(isRight)
+        Pivot.x = offsetR.position.x - gun.position.x;
+        else if (isLeft)
+        Pivot.x = offsetL.position.x - gun.position.x;
+
     }
 
     void findMouseAngle()
@@ -58,31 +62,38 @@ public class PlayerFollowMouse : MonoBehaviour
         {
             angle += 360;
         }
+
+        if (angle < 80 && angle > 0 || angle > 280 && angle < 360)
+        {
+            isRight = true;
+            isLeft = false;
+        }
+        else if (angle > 100 && angle < 180 || angle > 180 && angle < 260 )
+        {
+            isRight = false;
+            isLeft = true;
+        }
     }
 
     void PivotAroundPoint()
     {
-        
-
         gun.position += (gun.rotation * Pivot);
 
-        if (gun.eulerAngles.y >= 90 && hasRotated == false)
-        {
-            Vector3 rotationAngle = new Vector3(0, 270, 0);
-            gun.rotation = Quaternion.Euler(rotationAngle);
-            hasRotated = true;
-        }
-        else gun.transform.rotation = Quaternion.Euler(0,-angle,0);
-        //gun.rotation *= Quaternion.AngleAxis(45* angle, Vector3.up);
-        
-        if (hasRotated == true && gun.eulerAngles.y <= 10)
-        {
-            hasRotated = false;
-        }
+        gun.transform.rotation = Quaternion.Euler(0,-angle,0);
 
         gun.position -= (gun.rotation * Pivot);
 
-        
+        if (isRight)
+        {
+            gun.position = new Vector3(0.6f, gun.position.y, gun.position.z);
+           // FindDistance();
+        }
+        else if (isLeft)
+        {
+
+            gun.position = new Vector3(-0.6f, gun.position.y, gun.position.z);
+           // FindDistance();
+        }
 
         if (DebugInfo)
         {
