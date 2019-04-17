@@ -11,9 +11,14 @@ public class BossMove : MonoBehaviour
     public int pauseTime = 3;
     public bool Coroutine, validPath;
     public Vector3 target;
+    Vector3 lastTargetLocation;
 
     void Start()
     {
+        boss = this.gameObject;
+        agent = this.GetComponent<NavMeshAgent>();
+        target = GameObject.FindGameObjectWithTag("Player").gameObject.transform.position;
+
         agent = GetComponent<NavMeshAgent>();
         NavPath = new NavMeshPath();
     }
