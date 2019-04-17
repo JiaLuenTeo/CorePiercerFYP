@@ -4,9 +4,22 @@ using UnityEngine;
 
 public class BossAI : MonoBehaviour
 {
+    public enum BossCurrentState
+    {
+        IDLE,
+        MOVING,
+        SHOOTINGNORMAL1,
+        SHOOTINGEXPLODING,
+        SHOOTINGLASER,
+        CHARGING,
+        HURT,
+        TOTAL
+    }
+
     BossMove bossMovement;
     AOEBulletController bossBulletMovement;
     ExplodingBullet bossExplodingBullet;
+    public BossCurrentState curState, preState;
 
     // Start is called before the first frame update
     void Start()
