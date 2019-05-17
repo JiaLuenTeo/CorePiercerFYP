@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerFollowMouse : MonoBehaviour
 {
     public Vector3 Pivot;
-    public bool DebugInfo = true;
 
     public Transform gun;
     public Transform gunRotationGO;
@@ -13,7 +12,8 @@ public class PlayerFollowMouse : MonoBehaviour
     public Transform handR, handL;
 
     Vector3 mousePosition;
-    float angle;
+    public float angle;
+    public float angleFix = 0;
 
     public bool isRight = true;
     public bool isLeft = false;
@@ -31,6 +31,7 @@ public class PlayerFollowMouse : MonoBehaviour
     {
         findMouseAngle();
         PivotAroundPoint();
+        angleFixing();
     }
 
     void FindDistance()
@@ -66,14 +67,68 @@ public class PlayerFollowMouse : MonoBehaviour
             isRight = false;
             isLeft = true;
         }
+        
+    }
+
+
+    void angleFixing()
+    {
+        if (angle > 110 && angle < 170 || angle > 290 && angle < 350) //check right angle
+        {
+            angleFix = 10;
+        }
+        else if (angle < 70 && angle > 10 || angle > 190 && angle < 250) //check left angle
+        {
+            angleFix = -10;
+        }
+        //CORRECTION LERP FOR THE RIGHT SIDE 
+        else if (angle < 10)
+        {
+            angleFix = Mathf.SmoothStep(0, -10, angle / 10);
+        }
+        else if (angle > 350)
+        {
+            angleFix = Mathf.SmoothStep(0, 10, (360 - angle) / 10);
+        }
+        //CORRECTION LERP FOR THE LEFT SIDE
+        else if (angle > 170 && angle <= 180)
+        {
+            angleFix = Mathf.SmoothStep(0, 10, (180 - angle) / 10);
+        }
+        else if (angle < 190 && angle >= 180)
+        {
+            angleFix = Mathf.SmoothStep(0, -10, (angle - 180) / 10);
+        }
+        //CORRECTION LERP FOR THE TOP SIDE
+        else if (angle > 70 && angle <= 80)
+        {
+            angleFix = Mathf.SmoothStep(0, -10, (80 - angle) / 10);
+        }
+        else if (angle >= 100 && angle < 110)
+        {
+            angleFix = Mathf.SmoothStep(0, 10, (angle - 100) / 10);
+        }
+        //CORRECTION LERP FOR THE BOTTOM SIDE
+        else if (angle > 250 && angle <= 260)
+        {
+            angleFix = Mathf.SmoothStep(0, -10, (260 - angle) / 10);
+        }
+        else if (angle >= 280 && angle < 290)
+        {
+            angleFix = Mathf.SmoothStep(0, 10, (angle - 280) / 10);
+        }
+        else
+        {
+            angleFix = 0;
+        }
     }
 
     void PivotAroundPoint()
     {
         gun.position += (gun.rotation * Pivot);//pivot
 
-        gun.transform.rotation = Quaternion.Euler(0,-angle,0); //rotate gun towards mouse
-
+        gun.transform.rotation = Quaternion.Euler(0, -angle + angleFix, 0); 
+       
         gun.position -= (gun.rotation * Pivot);//pivot
 
         if (isLeft && !hasMovedL)
