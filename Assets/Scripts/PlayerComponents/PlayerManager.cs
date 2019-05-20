@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
     public float playerHealth;
     public float playerFireRatePerSecond;
     public float playerDashCooldownPerSecond;
-
+    public bool isInvincible = false;
 
     private void Awake()
     {
@@ -27,5 +27,13 @@ public class PlayerManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void playerTakeDamage()
+    {
+        if(!isInvincible)
+        {
+            playerHealth = playerHealth - 1;
+        }
     }
 }
