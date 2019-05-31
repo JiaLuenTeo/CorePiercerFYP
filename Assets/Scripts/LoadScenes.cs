@@ -5,6 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class LoadScenes : MonoBehaviour
 {
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void Instructions()
+    {
+        SceneManager.LoadScene(1);
+    }
+
     public void LoadGame()
     {
         SceneManager.LoadScene(2);
@@ -12,12 +22,12 @@ public class LoadScenes : MonoBehaviour
 
     public void LoadOptions()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(3);
     }
 
-    public void LoadMainMenu()
+    public void LoadCredits()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(4);
     }
 
     public void EndGame()

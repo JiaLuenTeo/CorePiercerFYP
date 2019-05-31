@@ -12,9 +12,15 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: ec64097cfa47ddc40ac2992c5e341d3e
   - enabled: 1
-    path: Assets/Scenes/Options.unity
-    guid: ff06c4e94b5f3cb47b6effe844fcc2c3
+    path: Assets/Scenes/Instructions.unity
+    guid: 070e50eefa2a9e344a6806b58ba87ede
   - enabled: 1
     path: Assets/Scenes/PrototypeScene.unity
     guid: b95c70459f0ecc64781f8df8a9ed9d56
+  - enabled: 1
+    path: Assets/Scenes/Options.unity
+    guid: ff06c4e94b5f3cb47b6effe844fcc2c3
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: a7a0a2b8de0cae64087ce2241519ee29
   m_configObjects: {}
