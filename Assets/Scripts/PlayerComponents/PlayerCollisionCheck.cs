@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class PlayerCollisionCheck : MonoBehaviour
 {
+    bool hasLeaveCollision = true;
+
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "EnemyBullet")
+        if (collision.gameObject.tag == "EnemyBullet" && hasLeaveCollision == true)
         {
             PlayerManager.Instance.playerTakeDamage();
             Debug.Log("Player got hit");
+            hasLeaveCollision = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.tag == "EnemyBullet" && hasLeaveCollision == false)
+        {
+            hasLeaveCollision = true;
         }
     }
 }
