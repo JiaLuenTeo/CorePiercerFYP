@@ -10,6 +10,9 @@ public class PlayerShootLaser : MonoBehaviour
     Vector3 mousePosition;
     public float time;
 
+    public float maxReflectionCount;
+    public float maxStepDistance = 100;
+
     // Use this for initialization
     void Start()
     {
@@ -25,6 +28,10 @@ public class PlayerShootLaser : MonoBehaviour
         {
             fireLaser();
         }
+        else if (Input.GetMouseButton(1) && time >= PlayerManager.Instance.playerFireRatePerSecond)
+        {
+            fireRicochet();
+        }
         
     }
 
@@ -33,6 +40,16 @@ public class PlayerShootLaser : MonoBehaviour
         Vector3 newPosition = new Vector3(gun.position.x + mousePosition.x, gun.position.y, gun.position.z + mousePosition.z);
         GameObject curLaser;
         curLaser = GameObject.Instantiate<GameObject>(playerLaser,gun.position, gun.transform.rotation);
+        curLaser.GetComponent<PlayerLaser>().isLaser = true;
+        time = 0.0f;
+    }
+
+    void fireRicochet()
+    {
+        Vector3 newPosition = new Vector3(gun.position.x + mousePosition.x, gun.position.y, gun.position.z + mousePosition.z);
+        GameObject curRiccochetBullet;
+        curRiccochetBullet = GameObject.Instantiate<GameObject>(playerLaser, gun.position, gun.transform.rotation);
+        curRiccochetBullet.GetComponent<PlayerLaser>().isRiccochet = true;
         time = 0.0f;
     }
 }
