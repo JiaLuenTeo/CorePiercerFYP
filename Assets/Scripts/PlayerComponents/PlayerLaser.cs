@@ -1,17 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class PlayerLaser : MonoBehaviour
+public class PlayerReflectBullet : MonoBehaviour
 {
     Vector3 mousePosition;
     Vector3 getFlyingPos;
+    Vector3 lastFrameVelocity;
+    Rigidbody rb;
     Quaternion getRotation;
     public float bulletSpeed = 10.0f;
     public bool isLaser, isRiccochet;
+    public LayerMask collisionMask;
     float killTime = 2.0f;
     float time;
-    public LayerMask collisionMask;
+    
 
 
     // Start is called before the first frame update
@@ -19,7 +23,7 @@ public class PlayerLaser : MonoBehaviour
     {
         mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
         getFlyingPos = new Vector3(mousePosition.x, 0.0f, mousePosition.z).normalized;
-       
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -33,13 +37,13 @@ public class PlayerLaser : MonoBehaviour
         {
             riccochetBounceFly();
         }
-       
 
+        
     }
 
     void laserFly()
     {
-        this.transform.Translate(getFlyingPos * Time.deltaTime * bulletSpeed);
+        transform.position += transform.right * Time.deltaTime * bulletSpeed;
 
 
         time += Time.deltaTime;
@@ -51,23 +55,34 @@ public class PlayerLaser : MonoBehaviour
     void riccochetBounceFly()
     {
 
-        this.transform.Translate(getFlyingPos * Time.deltaTime * bulletSpeed);
+        rb.velocity = transform.right * bulletSpeed;
 
-        Ray ray = new Ray(this.transform.position, transform.forward);
         RaycastHit hit;
+        Ray ray = new Ray(transform.position, transform.right);
 
-       
-        if (Physics.Raycast(ray, out hit, Time.deltaTime * bulletSpeed + .1f,collisionMask))
+        if (Physics.Raycast(ray, out hit, Time.deltaTime * bulletSpeed + .1f, collisionMask))
         {
-            Vector3 reflectDir = Vector3.Reflect(ray.direction, hit.normal);
-            float rot = 90 - Mathf.Atan2(reflectDir.z, reflectDir.x) * Mathf.Rad2Deg;
-            transform.eulerAngles = new Vector3(0, rot, 0);
+            Vector3 reflection = Vector3.Reflect(ray.direction, hit.normal);
+            rb.velocity = reflection * bulletSpeed;
+            Quaternion rotation = Quaternion.FromToRotation(lastFrameVelocity, reflection);
+            transform.rotation = rotation * transform.rotation;
         }
 
-       
+        time += Time.deltaTime;
 
+        if (time >= killTime)
+            GameObject.Destroy(this.gameObject);
 
     }
 
+    private void FixedUpdate()
+    {
+        lastFrameVelocity = rb.velocity;
+    }
+
     
+
+ 
 }
+
+

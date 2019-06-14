@@ -7,7 +7,10 @@ public class PlayerShootLaser : MonoBehaviour
     public Transform gunSpawnPosition;
     public Transform gun;
     public GameObject playerLaser;
+    public LayerMask collisionMask;
     Vector3 mousePosition;
+    LineRenderer lr;
+
     public float time;
 
     public float maxReflectionCount;
@@ -17,6 +20,8 @@ public class PlayerShootLaser : MonoBehaviour
     void Start()
     {
         mousePosition = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        lr = GetComponent<LineRenderer>();
+        lr.enabled = false;
     }
 
     // Update is called once per frame
@@ -28,19 +33,32 @@ public class PlayerShootLaser : MonoBehaviour
         {
             fireLaser();
         }
-        else if (Input.GetMouseButton(1) && time >= PlayerManager.Instance.playerFireRatePerSecond)
+        else if (Input.GetMouseButton(1) && time >= PlayerManager.Instance.playerReflectingBulletFireRate)
         {
             fireRicochet();
         }
-        
+        else if (time >= 0.5f)
+        {
+            lr.enabled = false;
+        }
+       
     }
 
     void fireLaser()
     {
-        Vector3 newPosition = new Vector3(gun.position.x + mousePosition.x, gun.position.y, gun.position.z + mousePosition.z);
-        GameObject curLaser;
-        curLaser = GameObject.Instantiate<GameObject>(playerLaser,gun.position, gun.transform.rotation);
-        curLaser.GetComponent<PlayerLaser>().isLaser = true;
+        lr.enabled = true;
+        lr.SetPosition(0, gun.position);
+        lr.startWidth = 0.05f;
+
+        Ray ray = new Ray(gun.position, gun.transform.right);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+            if (hit.collider)
+            { 
+                lr.SetPosition(1, hit.point);
+            }
+        }
         time = 0.0f;
     }
 
@@ -49,7 +67,7 @@ public class PlayerShootLaser : MonoBehaviour
         Vector3 newPosition = new Vector3(gun.position.x + mousePosition.x, gun.position.y, gun.position.z + mousePosition.z);
         GameObject curRiccochetBullet;
         curRiccochetBullet = GameObject.Instantiate<GameObject>(playerLaser, gun.position, gun.transform.rotation);
-        curRiccochetBullet.GetComponent<PlayerLaser>().isRiccochet = true;
+        curRiccochetBullet.GetComponent<PlayerReflectBullet>().isRiccochet = true;
         time = 0.0f;
     }
 }
