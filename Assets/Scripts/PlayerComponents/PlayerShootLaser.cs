@@ -46,19 +46,10 @@ public class PlayerShootLaser : MonoBehaviour
 
     void fireLaser()
     {
-        lr.enabled = true;
-        lr.SetPosition(0, gun.position);
-        lr.startWidth = 0.05f;
-
-        Ray ray = new Ray(gun.position, gun.transform.right);
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 1000))
-        {
-            if (hit.collider)
-            { 
-                lr.SetPosition(1, hit.point);
-            }
-        }
+        Vector3 newPosition = new Vector3(gun.position.x + mousePosition.x, gun.position.y, gun.position.z + mousePosition.z);
+        GameObject curRiccochetBullet;
+        curRiccochetBullet = GameObject.Instantiate<GameObject>(playerLaser, gun.position, gun.transform.rotation);
+        curRiccochetBullet.GetComponent<PlayerReflectBullet>().isLaser = true;
         time = 0.0f;
     }
 

@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
         translationY = Input.GetAxis("Vertical") * speed;
         translationX = Input.GetAxis("Horizontal") * speed;
 
-        transform.Translate(new Vector3(translationX, 0f, translationY) * Time.deltaTime, Space.World);
+        transform.Translate(new Vector3(translationX, 0f, translationY) * Time.deltaTime);
     }
 
     void dashMovement()

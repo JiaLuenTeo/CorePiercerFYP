@@ -12,6 +12,7 @@ public class PlayerReflectBullet : MonoBehaviour
     Quaternion getRotation;
     public float bulletSpeed = 10.0f;
     public bool isLaser, isRiccochet;
+    public float bulletDamage = 1.0f;
     public LayerMask collisionMask;
     float killTime = 2.0f;
     float time;
@@ -43,7 +44,7 @@ public class PlayerReflectBullet : MonoBehaviour
 
     void laserFly()
     {
-        transform.position += transform.right * Time.deltaTime * bulletSpeed;
+        rb.velocity = transform.right * bulletSpeed;
 
 
         time += Time.deltaTime;
@@ -80,9 +81,21 @@ public class PlayerReflectBullet : MonoBehaviour
         lastFrameVelocity = rb.velocity;
     }
 
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Boss")
+        {
+            BossAI.Instance.bossHealth -= bulletDamage;
+            GameObject.Destroy(this.gameObject);
+        }
+        else if (other.gameObject.tag == "Walls" && isLaser == true)
+        {
+            GameObject.Destroy(this.gameObject);
+        }
 
- 
+    }
+
+
 }
 
 
