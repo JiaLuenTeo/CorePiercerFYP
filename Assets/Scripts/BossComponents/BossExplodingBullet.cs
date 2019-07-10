@@ -52,7 +52,7 @@ public class BossExplodingBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            PlayerManager.Instance.playerHealth -= 2;
+            PlayerManager.Instance.playerTakeDamage(1.0f);
             Destroy(this.gameObject);
         }
         if (other.gameObject.tag == "Exploding")

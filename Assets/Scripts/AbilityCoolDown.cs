@@ -12,20 +12,23 @@ public class AbilityCoolDown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             ready = true;
         }
 
         if (ready)
         {
-            abilityCD.fillAmount += 1 / cooldown * Time.deltaTime;
+            abilityCD.fillAmount = 0;
 
-            if(abilityCD.fillAmount >= 1)
-            {
-                abilityCD.fillAmount = 0;
-                ready = false;
-            }
+
+            ready = false;
         }
+
+        if (!ready)
+        {
+            abilityCD.fillAmount += 1 / PlayerManager.Instance.playerDashCooldownPerSecond * Time.deltaTime;
+        }
+
     }
 }

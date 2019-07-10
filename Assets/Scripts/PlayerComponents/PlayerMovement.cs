@@ -6,10 +6,10 @@ public class PlayerMovement : MonoBehaviour
 {
     public float speed;
     public float dashDistance;
+    public float dashTime = 1.0f;
     Rigidbody rb;
     float translationX, translationY;
-    float curTime;
-    public bool disableClip = false;
+    public float curTime;
     
 
     // Start is called before the first frame update
@@ -19,11 +19,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-
         keyboardMovement();
-        if (!disableClip)
         dashMovement();
     }
 
@@ -38,46 +36,29 @@ public class PlayerMovement : MonoBehaviour
     void dashMovement()
     {
         curTime += Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        Vector3 currentDirection = new Vector3(translationX, 0.0f, translationY);
+        if (Input.GetKeyDown(KeyCode.LeftShift) && currentDirection != Vector3.zero)
         {
             Debug.Log("Button Pressed");
             float buttonPressed = curTime;
             //play start up animation here
 
             //get button that is being pressed here for direction (y is set to the current player Y. Only moves in the XZ)
-            Vector3 currentDirection = new Vector3(translationX, 0.0f, translationY);
-
-            RaycastHit hit;
-            Ray ray = new Ray(transform.position, currentDirection);
-
-            if (Physics.Raycast(ray, out hit, dashDistance))
-            {
-                if (hit.transform.tag == "Walls" && (buttonPressed - curTime) <= 0.1f)
-                {
-                    PlayerManager.Instance.isInvincible = true;
-                    if (transform.position != hit.point)
-                    {
-                        transform.Translate(currentDirection.normalized * dashDistance * Time.deltaTime);
-                    }
-                   
-                }
-                else if ((buttonPressed - curTime) <= 0.1f)
-                {
-                    PlayerManager.Instance.isInvincible = true;
-                    transform.Translate(currentDirection.normalized * dashDistance * Time.deltaTime);
-                }
-            }
+            
     
-            /*if ((buttonPressed - curTime) <= 0.1f)
+            if ((buttonPressed - curTime) <= dashTime)
             {
                 PlayerManager.Instance.isInvincible = true;
                 //Play dash animation here or something lol
-                transform.Translate(currentDirection.normalized * dashDistance * Time.deltaTime);
+                this.GetComponent<Rigidbody>().AddForce(currentDirection.normalized * dashDistance,ForceMode.Impulse);
                 Debug.Log("Currently Dashing");
-            }*/
+                curTime = 0.0f;
+            }
+            
             
         }
+        GetComponent<Rigidbody>().velocity = Vector3.zero;
+        if(curTime <= 0)
         PlayerManager.Instance.isInvincible = false;
     }
 
@@ -85,15 +66,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.transform.tag == "Walls")
         {
-            disableClip = true;
-        }
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-        if (collision.transform.tag == "Walls")
-        {
-            disableClip = false;
+            GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 }

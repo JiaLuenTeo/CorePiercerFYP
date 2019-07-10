@@ -7,9 +7,11 @@ public class AOEBulletController : MonoBehaviour {
 
     public int numberOfBullet;
     public float bulletSpeed;
+    public float angleOffset;
     public GameObject BulletPrefab;
-
-    private Vector3 startPoint;
+    public float shootAngle = 180.0f;
+    public float startingAngle = 90.0f;
+    Vector3 startPoint;
     private const float radius = 1f;
 
 
@@ -20,6 +22,7 @@ public class AOEBulletController : MonoBehaviour {
         {
             startPoint = transform.position;
             SpawnBullet(numberOfBullet);
+            startingAngle = transform.rotation.y * 10.0f ;
         }
     }
 
@@ -27,8 +30,8 @@ public class AOEBulletController : MonoBehaviour {
 
     private void SpawnBullet(int _numberOfBullets)
     {
-        float angleStep = 180f / _numberOfBullets;
-        float angle = 0f;
+        float angleStep = shootAngle / _numberOfBullets;
+        float angle = startingAngle;
 
         for (int i = 0; i <= _numberOfBullets - 1; i++)
         {

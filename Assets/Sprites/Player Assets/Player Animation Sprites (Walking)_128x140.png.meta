@@ -1,0 +1,939 @@
+fileFormatVersion: 2
+guid: 72b074173c05e714895454c6697566de
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Player Animation Sprites (Walking)_128x140_0
+    21300002: Player Animation Sprites (Walking)_128x140_1
+    21300004: Player Animation Sprites (Walking)_128x140_2
+    21300006: Player Animation Sprites (Walking)_128x140_3
+    21300008: Player Animation Sprites (Walking)_128x140_4
+    21300010: Player Animation Sprites (Walking)_128x140_5
+    21300012: Player Animation Sprites (Walking)_128x140_6
+    21300014: Player Animation Sprites (Walking)_128x140_7
+    21300016: Player Animation Sprites (Walking)_128x140_8
+    21300018: Player Animation Sprites (Walking)_128x140_9
+    21300020: Player Animation Sprites (Walking)_128x140_10
+    21300022: Player Animation Sprites (Walking)_128x140_11
+    21300024: Player Animation Sprites (Walking)_128x140_12
+    21300026: Player Animation Sprites (Walking)_128x140_13
+    21300028: Player Animation Sprites (Walking)_128x140_14
+    21300030: Player Animation Sprites (Walking)_128x140_15
+    21300032: Player Animation Sprites (Walking)_128x140_16
+    21300034: Player Animation Sprites (Walking)_128x140_17
+    21300036: Player Animation Sprites (Walking)_128x140_18
+    21300038: Player Animation Sprites (Walking)_128x140_19
+    21300040: Player Animation Sprites (Walking)_128x140_20
+    21300042: Player Animation Sprites (Walking)_128x140_21
+    21300044: Player Animation Sprites (Walking)_128x140_22
+    21300046: Player Animation Sprites (Walking)_128x140_23
+    21300048: Player Animation Sprites (Walking)_128x140_24
+    21300050: Player Animation Sprites (Walking)_128x140_25
+    21300052: Player Animation Sprites (Walking)_128x140_26
+    21300054: Player Animation Sprites (Walking)_128x140_27
+    21300056: Player Animation Sprites (Walking)_128x140_28
+    21300058: Player Animation Sprites (Walking)_128x140_29
+    21300060: Player Animation Sprites (Walking)_128x140_30
+    21300062: Player Animation Sprites (Walking)_128x140_31
+    21300064: Player Animation Sprites (Walking)_128x140_32
+    21300066: Player Animation Sprites (Walking)_128x140_33
+    21300068: Player Animation Sprites (Walking)_128x140_34
+    21300070: Player Animation Sprites (Walking)_128x140_35
+    21300072: Player Animation Sprites (Walking)_128x140_36
+    21300074: Player Animation Sprites (Walking)_128x140_37
+    21300076: Player Animation Sprites (Walking)_128x140_38
+    21300078: Player Animation Sprites (Walking)_128x140_39
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_0
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1264
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd2c7106c733d174184ff8da3dcdec96
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_1
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 1264
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2c45eaf564736d84d99f18f270d99dfe
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_2
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 1264
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b4164b384fd78646a433885b8373a11
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_3
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 1264
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 970ee3486a8c0db45bf89801a463a58b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_4
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1124
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa02306eba15f944e8a25953a7b96f5b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_5
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 1124
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c525d5d51635b43a534711fd6b4d27
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_6
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 1124
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21b827a89337c2f4bb2ad52cd14fd48a
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_7
+      rect:
+        serializedVersion: 2
+        x: 400
+        y: 1124
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8c0df8adcbd52b4390228fbe5c955b0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_8
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 984
+        width: 88
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f76291ec6880340a3b4095e99e7e39
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_9
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 984
+        width: 88
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2610ca87b42b9242ac259bc241d3a72
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_10
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 984
+        width: 88
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea7a3435a7b76e5489990260320e2176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_11
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 984
+        width: 88
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89e799a05333cea4abbcafc535ea32c6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_12
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 844
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 768b7661b79c09d4fb7ea03c4c1aa5ae
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_13
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 844
+        width: 92
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af595788740121b4ea7acbd5cf7e87e9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_14
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 844
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f617ca15b3582f9439132fd5b4cdec18
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_15
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 844
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50748558dd986ef48b453aa8d74e1e61
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_16
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 704
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4041ab9e66849d40995b6955377aa37
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_17
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 704
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb8ab402a72aaab48be22b33f29d87df
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_18
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 704
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f0995c090e16e44d91364da21a13197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_19
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 704
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a829cc9a12365d4f8ca6c09d8720d3f
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_20
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 564
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2542b07154d9dd240b1821c19b2567a9
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_21
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 564
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94356d7a9b02f4b43921c0444a7e75c8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_22
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 564
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95869627a944e8f438803708363999f3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_23
+      rect:
+        serializedVersion: 2
+        x: 416
+        y: 564
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8acf27b584cddcd4193c492f82179fc8
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_24
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 424
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a98ac18396b42e64fb60779f7e25f3cb
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_25
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 424
+        width: 92
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7090bc53cf3cb1b418f24788551fc3e7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_26
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 424
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04269b1349864a46a217f523b62680d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_27
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 424
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d59b29d8ab5b0e747afd001ac06e8a18
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_28
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 284
+        width: 88
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a35e7dad5391cb4b8dbe386c101579d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_29
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 284
+        width: 88
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47fcfbcb40aa11e46b99e2fadaa5fd9e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_30
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 284
+        width: 88
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ab3278b62075a849a2bcb01484a6ce2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_31
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 284
+        width: 88
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ce768729976b1347be2b84476960d9b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_32
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 144
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00c7900774960a34a9b3084375433eab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_33
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 144
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 319bb266e585f164aab6a7d3a3d9756e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_34
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 144
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0eaa3a3b5e528e046af190f8997670ff
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_35
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 144
+        width: 96
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f3e8713bee3e484b90c87a434416734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_36
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 4
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7d3c37af5e799a48967322be0875fda
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_37
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 4
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b223ad656a629445b8f07135a4f6b98
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_38
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 4
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 330e74c39c6b763438ae4c6d8f1076a0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Player Animation Sprites (Walking)_128x140_39
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 4
+        width: 76
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6fe90dbe53c9d246ba0b5d143ff77b4
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: fa3e89880b774484791b4628e616340f
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

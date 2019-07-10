@@ -17,6 +17,8 @@ public class PlayerFollowMouse : MonoBehaviour
 
     public bool isRight = true;
     public bool isLeft = false;
+    public bool isUp = false;
+    public bool isDown = false;
     public bool hasMovedR = true;
     public bool hasMovedL = false;
 
@@ -27,7 +29,7 @@ public class PlayerFollowMouse : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         findMouseAngle();
         PivotAroundPoint();
@@ -103,19 +105,27 @@ public class PlayerFollowMouse : MonoBehaviour
         else if (angle > 70 && angle <= 80)
         {
             angleFix = Mathf.SmoothStep(0, -10, (80 - angle) / 10);
+            isDown = false;
+            isUp = true;
         }
         else if (angle >= 100 && angle < 110)
         {
             angleFix = Mathf.SmoothStep(0, 10, (angle - 100) / 10);
+            isDown = false;
+            isUp = true;
         }
         //CORRECTION LERP FOR THE BOTTOM SIDE
         else if (angle > 250 && angle <= 260)
         {
             angleFix = Mathf.SmoothStep(0, -10, (260 - angle) / 10);
+            isUp = false;
+            isDown = true;
         }
         else if (angle >= 280 && angle < 290)
         {
             angleFix = Mathf.SmoothStep(0, 10, (angle - 280) / 10);
+            isUp = false;
+            isDown = true;
         }
         else
         {
@@ -133,16 +143,15 @@ public class PlayerFollowMouse : MonoBehaviour
 
         if (isLeft && !hasMovedL)
         {
-            gunRotationGO.transform.rotation = new Quaternion(0, 180, 0,0);
-            angle = 270.0f;
+            gunRotationGO.transform.rotation = new Quaternion(0, 90, 0, 0);
+            angle = 0;
             hasMovedL = true;
             hasMovedR = false;
         }
         if (isRight && !hasMovedR)
         {
             gunRotationGO.transform.rotation = new Quaternion(0, 0, 0, 0);
-            angle = 60.0f;
-            Debug.Log("X moved to : " + gun.position.x);
+            angle = 0;
             hasMovedL = false;
             hasMovedR = true;
         }

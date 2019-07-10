@@ -27,14 +27,26 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
+        disableCollider();
         
     }
 
-    public void playerTakeDamage()
+    void disableCollider()
+    {
+        if (isInvincible)
+        GetComponent<BoxCollider>().enabled = false;
+        else if (!isInvincible)
+        GetComponent<BoxCollider>().enabled = true;
+    }
+
+    public void playerTakeDamage(float damage)
     {
         if(!isInvincible)
         {
-            playerHealth = playerHealth - 1;
+            SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_PLAYER_HIT);
+            playerHealth = playerHealth - damage;
+            
         }
     }
 }

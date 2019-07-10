@@ -85,11 +85,20 @@ public class PlayerReflectBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Boss")
         {
+            if (isRiccochet)
             BossAI.Instance.bossHealth -= bulletDamage;
+            else if (isLaser)
+            BossAI.Instance.bossHealth -= 1;
             GameObject.Destroy(this.gameObject);
         }
         else if (other.gameObject.tag == "Walls" && isLaser == true)
         {
+            GameObject.Destroy(this.gameObject);
+        }
+
+        else if (other.gameObject.tag == "Destroyable")
+        {
+            other.GetComponent<spiderMinesTrack>().mineHealth -= 1;
             GameObject.Destroy(this.gameObject);
         }
 

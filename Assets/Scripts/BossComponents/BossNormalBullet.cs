@@ -20,7 +20,7 @@ public class BossNormalBullet : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            PlayerManager.Instance.playerHealth -= 1;
+            PlayerManager.Instance.playerTakeDamage(1.0f);
             Destroy(this.gameObject);
         }
         if (other.gameObject.tag == "Walls")

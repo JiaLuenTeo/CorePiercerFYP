@@ -10,7 +10,7 @@ public class PlayerCollisionCheck : MonoBehaviour
     {
         if (collision.gameObject.tag == "EnemyBullet" && hasLeaveCollision == true)
         {
-            PlayerManager.Instance.playerTakeDamage();
+            PlayerManager.Instance.playerTakeDamage(1.0f);
             Debug.Log("Player got hit");
             hasLeaveCollision = false;
         }

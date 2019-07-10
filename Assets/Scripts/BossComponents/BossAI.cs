@@ -17,6 +17,8 @@ public class BossAI : MonoBehaviour
         SHOOTINGEXPLODINGRADIAL,
         SHOOTINGMISSLE,
         SHOOTINGEXPLODING,
+        SPAWNMINES,
+        SPAWNSPIDERS,
         CHARGING,
         HURT,
         TOTAL
@@ -34,8 +36,11 @@ public class BossAI : MonoBehaviour
     [Header ("Bullet Settings")]
     public GameObject normalBulletPrefab;
     public GameObject explodingBulletPrefab;
+    public GameObject spiderMinesPrefab;
     public GameObject bulletSpawner;
+    
     public int numberOfBullets;
+    public float aimingDamping = 2.0f;
     public float sectionSize = 10.0f;
     public float angleToPlayer;
     public float bulletSpeed = 10.0f;
@@ -43,13 +48,19 @@ public class BossAI : MonoBehaviour
     public float shootTimeRadial = 2.0f;
     public float secondRadialOffset = 10.0f;
     float curShoot = 0.0f;
+    public float curGlobalTime = 0.0f;
+    public float curGlobalTime2 = 0.0f;
     float counter = 0.0f;
+    float changeStateTime = 10.0f;
 
     private const float radius = 1f;
     [Header("Boss States")]
     public BossCurrentState curState;
+    public BossCurrentState curState2;
     public BossCurrentState preState;
-    
+    public float firstStageSwitchTime = 10.0f;
+    public float secondStageSwitchTime = 10.0f;
+    public float finalStageSwitchTime = 15.0f;
 
 
     private void Awake()
@@ -71,32 +82,107 @@ public class BossAI : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+
         switch (curState)
         {
             case BossCurrentState.IDLE:
-                CheckGameStatus();
+                checkCurrentHealth();
                 break;
 
             case BossCurrentState.SHOOTINGNORMAL:
                 MoveToPlayer();
                 ShootAtPlayer();
+                checkCurrentHealth();
                 break;
 
             case BossCurrentState.SHOOTINGRADIAL:
                 MoveToPlayer();
                 ShootRadial();
+                checkCurrentHealth();
                 break;
 
             case BossCurrentState.SHOOTINGEXPLODINGRADIAL:
                 ShootExplodingRadial();
+                checkCurrentHealth();
                 break;
 
             case BossCurrentState.SHOOTINGMISSLE:
                 StartMissle();
+                checkCurrentHealth();
                 break;
 
-
+            case BossCurrentState.SPAWNSPIDERS:
+                SpawnSpiders();
+                break;
         }
+    }
+
+    void checkCurrentHealth()
+    {
+        curGlobalTime += Time.deltaTime;
+        
+
+        if (curState == BossCurrentState.IDLE)
+        {
+            preState = curState;
+            curState = BossCurrentState.SHOOTINGNORMAL;
+        }
+
+        if (bossHealth >= 70 && curGlobalTime >= firstStageSwitchTime)
+        {
+            if (curState == BossCurrentState.SHOOTINGNORMAL)
+            {
+                preState = curState;
+                curState = BossCurrentState.SHOOTINGRADIAL;
+                shootTimeNormal = 0.5f;
+                curGlobalTime = 0.0f;
+            }
+            else if (curState == BossCurrentState.SHOOTINGRADIAL)
+            {
+                preState = curState;
+                curState = BossCurrentState.SHOOTINGNORMAL;
+                shootTimeRadial = 0.5f;
+                curGlobalTime = 0.0f;
+            }
+            
+        }
+            
+         if (bossHealth < 70 && bossHealth >= 40)
+        {
+            WallScript.Instance.curState = WallScript.StageState.STAGE2;
+            GetComponent<NavMeshAgent>().speed = 3.0f;
+            if (curGlobalTime >= secondStageSwitchTime)
+            {
+                preState = curState;
+                curState = BossCurrentState.SHOOTINGEXPLODINGRADIAL;
+                curGlobalTime = 0.0f;
+            }
+            
+        }
+
+         if (bossHealth < 40 && bossHealth > 0)
+        {
+            curGlobalTime2 += Time.deltaTime;
+            if (curGlobalTime2 >= secondStageSwitchTime)
+            {
+                preState = curState;
+                curState = BossCurrentState.SHOOTINGEXPLODINGRADIAL;
+                curGlobalTime2 = 0.0f;
+            }
+            if (curGlobalTime >= finalStageSwitchTime)
+            {
+                preState = curState;
+                curState = BossCurrentState.SPAWNSPIDERS;
+                curGlobalTime = 0.0f;
+            }
+        }
+
+         if (bossHealth < 0)
+        {
+            LoadScenes.Instance.LoadMainMenu();
+        }
+        
     }
 
     void CheckGameStatus()
@@ -120,16 +206,17 @@ public class BossAI : MonoBehaviour
 
         angleToPlayer = Mathf.Atan2(toOther.z, toOther.x) * Mathf.Rad2Deg + 180;
 
+        Quaternion rotation = Quaternion.LookRotation(new Vector3(Player.transform.position.x, 0.0f, Player.transform.position.z) - new Vector3(bulletSpawner.transform.position.x, 0.0f, bulletSpawner.transform.position.z));
+        bulletSpawner.transform.rotation = Quaternion.Slerp(bulletSpawner.transform.rotation, rotation, Time.deltaTime * aimingDamping);
+        //bulletSpawner.transform.LookAt(new Vector3 (Player.transform.position.x , bulletSpawner.transform.position.y, Player.transform.position.z));
 
-        bulletSpawner.transform.LookAt(new Vector3 (Player.transform.position.x , bulletSpawner.transform.position.y, Player.transform.position.z));
-
-        if(curShoot >= shootTimeNormal)
+        if (curShoot >= shootTimeNormal)
         {
-            Vector3 randomShots = new Vector3(Random.Range(0.0f, 1.5f), 0.0f, Random.Range(0.0f, 1.5f));
+            Vector3 randomShots = new Vector3(Random.Range(0.0f, 4.0f), 0.0f, Random.Range(0.0f, 1.5f));
             GameObject tmpObj = Instantiate(normalBulletPrefab, bulletSpawner.transform.position + randomShots, bulletSpawner.transform.rotation);
             tmpObj.GetComponent<Rigidbody>().velocity = tmpObj.transform.forward * bulletSpeed;
             curShoot = 0;
-            shootTimeNormal = Random.Range(0.1f, 0.5f);
+            shootTimeNormal = Random.Range(0.1f, 0.3f);
         }
         
     }
@@ -169,7 +256,7 @@ public class BossAI : MonoBehaviour
 
         preState = curState;
         curState = BossCurrentState.SHOOTINGNORMAL;
-
+        shootTimeNormal = 0.5f;
         
     }
 
@@ -195,5 +282,23 @@ public class BossAI : MonoBehaviour
 
     }
 
+    void SpawnMines()
+    {
+
+    }
+
+    void SpawnSpiders()
+    {
+        if (GameObject.FindGameObjectsWithTag("Destroyable").Length <= 3)
+        {
+            Instantiate(spiderMinesPrefab, this.transform.position, Quaternion.identity);
+        }
+        else
+        {
+            preState = curState;
+            curState = BossCurrentState.SHOOTINGNORMAL;
+        }
+        
+    }
     
 }
