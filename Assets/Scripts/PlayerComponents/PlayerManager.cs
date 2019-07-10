@@ -9,6 +9,7 @@ public class PlayerManager : MonoBehaviour
 
     public float playerHealth;
     public float playerFireRatePerSecond;
+    public float playerReflectingBulletFireRate;
     public float playerDashCooldownPerSecond;
     public bool isInvincible = false;
 

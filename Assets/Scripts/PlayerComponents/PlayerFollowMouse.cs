@@ -134,12 +134,14 @@ public class PlayerFollowMouse : MonoBehaviour
         if (isLeft && !hasMovedL)
         {
             gunRotationGO.transform.rotation = new Quaternion(0, 180, 0,0);
+            angle = 270.0f;
             hasMovedL = true;
             hasMovedR = false;
         }
         if (isRight && !hasMovedR)
         {
             gunRotationGO.transform.rotation = new Quaternion(0, 0, 0, 0);
+            angle = 60.0f;
             Debug.Log("X moved to : " + gun.position.x);
             hasMovedL = false;
             hasMovedR = true;
