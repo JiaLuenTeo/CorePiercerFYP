@@ -15,28 +15,39 @@ public class LoadScenes : MonoBehaviour
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene(0);
+
+        SceneManager.LoadScene("MainMenu");
+        GameManager.Instance.curState = CurrentGameState.MainMenu;
     }
 
     public void Instructions()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Instructions");
     }
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(2);
-        GameManager.Instance.curState = CurrentGameState.GameStarted;
+        Time.timeScale = 1f;
+        GameManager.Instance.curGameTime = 0f;
+        SceneManager.LoadScene("GameScene");
+        //GameManager.Instance.curState = CurrentGameState.GameStarted;
+        
+        
     }
 
     public void LoadOptions()
     {
-        SceneManager.LoadScene(3);
+        SceneManager.LoadScene("Options");
     }
 
     public void LoadCredits()
     {
-        SceneManager.LoadScene(4);
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void afterGame()
+    {
+        SceneManager.LoadScene("End Screen");
     }
 
     public void EndGame()

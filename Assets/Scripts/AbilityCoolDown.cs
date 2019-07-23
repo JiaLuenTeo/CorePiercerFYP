@@ -5,30 +5,16 @@ using UnityEngine.UI;
 
 public class AbilityCoolDown : MonoBehaviour
 {
-    public Image abilityCD;
-    public float cooldown = 5;
-    public bool ready;
+
+
+    public Image dashAbilityCD, bounceAbilityCD;
+    public bool dashReady, bounceReady;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            ready = true;
-        }
-
-        if (ready)
-        {
-            abilityCD.fillAmount = 0;
-
-
-            ready = false;
-        }
-
-        if (!ready)
-        {
-            abilityCD.fillAmount += 1 / PlayerManager.Instance.playerDashCooldownPerSecond * Time.deltaTime;
-        }
-
+       
     }
+
+
 }

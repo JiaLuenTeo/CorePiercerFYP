@@ -53,7 +53,10 @@ public class SoundManagerScript : MonoBehaviour
 	// Preload before any Start() runs in other scripts
 	void Awake () 
 	{
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
+        else
+            Object.Destroy(gameObject);
 
         AudioSource[] audioSourceList = this.GetComponentsInChildren<AudioSource>();
 

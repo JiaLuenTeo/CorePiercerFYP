@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3544170950069055329}
-  - component: {fileID: 3544170950069055326}
   m_Layer: 0
   m_Name: Bullet Spawner
   m_TagString: Untagged
@@ -31,25 +30,6 @@ Transform:
   m_Father: {fileID: 3544170951927760376}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3544170950069055326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3544170950069055328}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be3cc2d0a12e23f4daf20f401b75e89c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numberOfBullet: 10
-  bulletSpeed: 10
-  angleOffset: 90
-  BulletPrefab: {fileID: 5261060460950708145, guid: 913260ba149389141a53f3a35f6f91ec,
-    type: 3}
-  shootAngle: 30
-  startingAngle: 315
 --- !u!1 &3544170950784339380
 GameObject:
   m_ObjectHideFlags: 0
@@ -61,7 +41,7 @@ GameObject:
   - component: {fileID: 3544170950784339381}
   - component: {fileID: 3544170950784339378}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Boss Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -198,8 +178,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af43165886643fb42960e8aef9483e51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxbossHealth: 100
   bossHealth: 100
+  bossSprite: {fileID: 3544170950784339378}
   normalBulletPrefab: {fileID: 5261060460950708145, guid: 913260ba149389141a53f3a35f6f91ec,
+    type: 3}
+  destroyableBulletPrefab: {fileID: 5261060460950708145, guid: e30f73f755441fe4096c5b7c1e073a18,
     type: 3}
   explodingBulletPrefab: {fileID: 6104290419781820070, guid: 6dec2706f5e805f4c8861c30d3cccf02,
     type: 3}
@@ -214,11 +198,17 @@ MonoBehaviour:
   shootTimeNormal: 0.2
   shootTimeRadial: 0.5
   secondRadialOffset: 10
+  spinSpeed: 800
+  spinTime: 3
+  RadialDestroyable: 2
   curGlobalTime: 0
+  curGlobalTime2: 0
   curState: 2
+  curState2: 0
   preState: 0
   firstStageSwitchTime: 10
   secondStageSwitchTime: 10
+  second2ndStageSwitchTime: 10
   finalStageSwitchTime: 5
 --- !u!195 &3544170951927760374
 NavMeshAgent:

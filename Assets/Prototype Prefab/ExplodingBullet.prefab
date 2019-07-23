@@ -122,7 +122,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfBullets: 20
   bulletSpeed: 5
-  timeToExplode: 0.5
+  timeToExplode: 1
   normalBulletPrefab: {fileID: 5261060460950708145, guid: 913260ba149389141a53f3a35f6f91ec,
     type: 3}
 --- !u!54 &6973123667026974294

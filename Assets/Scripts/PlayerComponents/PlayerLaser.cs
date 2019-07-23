@@ -13,6 +13,7 @@ public class PlayerReflectBullet : MonoBehaviour
     public float bulletSpeed = 10.0f;
     public bool isLaser, isRiccochet;
     public float bulletDamage = 1.0f;
+    public float riccochetDamage = 2.0f;
     public LayerMask collisionMask;
     float killTime = 2.0f;
     float time;
@@ -86,9 +87,9 @@ public class PlayerReflectBullet : MonoBehaviour
         if (other.gameObject.tag == "Boss")
         {
             if (isRiccochet)
-            BossAI.Instance.bossHealth -= bulletDamage;
+                BossAI.Instance.bossTakeDamage(riccochetDamage);
             else if (isLaser)
-            BossAI.Instance.bossHealth -= 1;
+                BossAI.Instance.bossTakeDamage(bulletDamage);
             GameObject.Destroy(this.gameObject);
         }
         else if (other.gameObject.tag == "Walls" && isLaser == true)
@@ -98,8 +99,14 @@ public class PlayerReflectBullet : MonoBehaviour
 
         else if (other.gameObject.tag == "Destroyable")
         {
-            other.GetComponent<spiderMinesTrack>().mineHealth -= 1;
+            other.gameObject.GetComponent<spiderMinesTrack>().mineHealth -= 1;
             GameObject.Destroy(this.gameObject);
+        }
+
+        else if (other.gameObject.tag == "BossDestroyable")
+        {
+            GameObject.Destroy(other.gameObject);
+            //GameObject.Destroy(this.gameObject);
         }
 
     }
