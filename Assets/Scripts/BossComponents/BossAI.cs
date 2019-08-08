@@ -11,16 +11,18 @@ public class BossAI : MonoBehaviour
     public enum BossCurrentState
     {
         IDLE = 0,
+        CUTSCENE,
         MOVING,
         SHOOTINGNORMAL,
         SHOOTINGRADIAL,
+        SHOOTING360SHOT,
         SHOOTINGEXPLODINGRADIAL,
         SHOOTINGMISSLE,
         SHOOTINGEXPLODING,
         SPAWNMINES,
         SPAWNSPIDERS,
-        CHARGING,
         HURT,
+        DYING,
         TOTAL
     };
 
@@ -31,10 +33,13 @@ public class BossAI : MonoBehaviour
     NavMeshPath bossPath;
 
     [Header ("Boss Setting")]
-    public float bossHealth = 100.0f;
+    public float maxbossHealth = 100.0f;
+    public float bossHealth = 0.0f;
+    public SpriteRenderer bossSprite;
 
     [Header ("Bullet Settings")]
     public GameObject normalBulletPrefab;
+    public GameObject destroyableBulletPrefab;
     public GameObject explodingBulletPrefab;
     public GameObject spiderMinesPrefab;
     public GameObject bulletSpawner;
@@ -47,19 +52,33 @@ public class BossAI : MonoBehaviour
     public float shootTimeNormal = 1.0f;
     public float shootTimeRadial = 2.0f;
     public float secondRadialOffset = 10.0f;
+
+    public float spinSpeed = 10.0f;
+    public float spinTime = 20.0f;
+
+    public float RadialDestroyable = 2.0f;
+
     float curShoot = 0.0f;
     public float curGlobalTime = 0.0f;
     public float curGlobalTime2 = 0.0f;
     float counter = 0.0f;
     float changeStateTime = 10.0f;
 
+    float hurtFlashTime = 0.1f;
+    float curFlashTime = 0.0f;
+    bool hurtFlash = false;
+    bool isFacingPlayer = false;
+    float fullCircleTimer = 0;
+
     private const float radius = 1f;
+
     [Header("Boss States")]
     public BossCurrentState curState;
     public BossCurrentState curState2;
     public BossCurrentState preState;
     public float firstStageSwitchTime = 10.0f;
     public float secondStageSwitchTime = 10.0f;
+    public float second2ndStageSwitchTime = 10.0f;
     public float finalStageSwitchTime = 15.0f;
 
 
@@ -72,18 +91,17 @@ public class BossAI : MonoBehaviour
     void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").gameObject;
-        curState = BossCurrentState.IDLE;
+        //curState = BossCurrentState.IDLE;
 
+        bossHealth = maxbossHealth;
 
         bossNavAgent = this.GetComponent<NavMeshAgent>();
         bossPath = new NavMeshPath();
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
-        
-
         switch (curState)
         {
             case BossCurrentState.IDLE:
@@ -102,13 +120,19 @@ public class BossAI : MonoBehaviour
                 checkCurrentHealth();
                 break;
 
+            case BossCurrentState.SHOOTING360SHOT:
+                MoveToPlayer();
+                Shoot360();
+                checkCurrentHealth();
+                break;
+
             case BossCurrentState.SHOOTINGEXPLODINGRADIAL:
                 ShootExplodingRadial();
                 checkCurrentHealth();
                 break;
 
             case BossCurrentState.SHOOTINGMISSLE:
-                StartMissle();
+                //StartMissle();
                 checkCurrentHealth();
                 break;
 
@@ -116,12 +140,16 @@ public class BossAI : MonoBehaviour
                 SpawnSpiders();
                 break;
         }
+
+        if (hurtFlash)
+            bossFlash();
     }
 
     void checkCurrentHealth()
     {
         curGlobalTime += Time.deltaTime;
-        
+
+        float currentPercent = bossHealth / maxbossHealth * 100.0f;
 
         if (curState == BossCurrentState.IDLE)
         {
@@ -129,7 +157,7 @@ public class BossAI : MonoBehaviour
             curState = BossCurrentState.SHOOTINGNORMAL;
         }
 
-        if (bossHealth >= 70 && curGlobalTime >= firstStageSwitchTime)
+        if (currentPercent >= 70 && curGlobalTime >= firstStageSwitchTime)
         {
             if (curState == BossCurrentState.SHOOTINGNORMAL)
             {
@@ -148,8 +176,9 @@ public class BossAI : MonoBehaviour
             
         }
             
-         if (bossHealth < 70 && bossHealth >= 40)
+         if (currentPercent < 70 && currentPercent >= 40)
         {
+            curGlobalTime2 += Time.deltaTime;
             WallScript.Instance.curState = WallScript.StageState.STAGE2;
             GetComponent<NavMeshAgent>().speed = 3.0f;
             if (curGlobalTime >= secondStageSwitchTime)
@@ -158,12 +187,18 @@ public class BossAI : MonoBehaviour
                 curState = BossCurrentState.SHOOTINGEXPLODINGRADIAL;
                 curGlobalTime = 0.0f;
             }
-            
+            if (curGlobalTime2 >= second2ndStageSwitchTime)
+            {
+                preState = curState;
+                curState = BossCurrentState.SHOOTING360SHOT;
+                curGlobalTime2 = 0.0f;
+            }
         }
 
-         if (bossHealth < 40 && bossHealth > 0)
+         if (currentPercent < 40 && currentPercent > 0)
         {
             curGlobalTime2 += Time.deltaTime;
+            WallScript.Instance.curState = WallScript.StageState.STAGE3;
             if (curGlobalTime2 >= secondStageSwitchTime)
             {
                 preState = curState;
@@ -178,9 +213,10 @@ public class BossAI : MonoBehaviour
             }
         }
 
-         if (bossHealth < 0)
+         if (currentPercent <= 0)
         {
-            LoadScenes.Instance.LoadMainMenu();
+            LoadScenes.Instance.afterGame();
+            GameManager.Instance.curState = CurrentGameState.GameWon;
         }
         
     }
@@ -217,6 +253,7 @@ public class BossAI : MonoBehaviour
             tmpObj.GetComponent<Rigidbody>().velocity = tmpObj.transform.forward * bulletSpeed;
             curShoot = 0;
             shootTimeNormal = Random.Range(0.1f, 0.3f);
+            SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_BOSS_SHOOT);
         }
         
     }
@@ -270,16 +307,56 @@ public class BossAI : MonoBehaviour
             Vector3 projectileVector = new Vector3(projectileX, projectileZ, 0.0f);
             Vector3 bulletMoveDirection = (projectileVector - this.transform.position);
 
-            GameObject tmpObj = Instantiate(normalBulletPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
-            tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y).normalized * bulletSpeed;
+            if ((i % RadialDestroyable) == 0)
+            {
+                GameObject destObj = Instantiate(destroyableBulletPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
+                destObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y).normalized * bulletSpeed;
+                destObj.GetComponent<BossNormalBullet>().isDestroyable = true;
+            }
+            else
+            {
+                GameObject tmpObj = Instantiate(normalBulletPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
+                tmpObj.GetComponent<Rigidbody>().velocity = new Vector3(bulletMoveDirection.x, 0, bulletMoveDirection.y).normalized * bulletSpeed;
+                
+            }
 
             angle += anglestep;
         }
+        SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_BOSS_SCATTER);
     }
 
-    void StartMissle()
+    void Shoot360()
     {
+        
 
+        if (!isFacingPlayer)
+        {
+            bulletSpawner.transform.LookAt(new Vector3(Player.transform.position.x, bulletSpawner.transform.position.y, Player.transform.position.z));
+            isFacingPlayer = true;
+        }
+        else if(isFacingPlayer)
+        {
+            fullCircleTimer += Time.deltaTime;
+
+            if (fullCircleTimer < spinTime)
+            {
+                bulletSpawner.transform.Rotate(Vector3.up * Time.deltaTime * spinSpeed, Space.World);
+
+                GameObject tmpObj = Instantiate(normalBulletPrefab, bulletSpawner.transform.position, bulletSpawner.transform.rotation);
+                tmpObj.GetComponent<Rigidbody>().velocity = bulletSpawner.transform.forward * bulletSpeed;
+            }
+            else if (fullCircleTimer >= spinTime)
+            {
+                isFacingPlayer = false;
+                fullCircleTimer = 0.0f;
+                curState = BossCurrentState.SHOOTINGNORMAL;
+                preState = curState;
+            }
+            
+             
+        }
+
+       
     }
 
     void SpawnMines()
@@ -300,5 +377,25 @@ public class BossAI : MonoBehaviour
         }
         
     }
+
+    public void bossTakeDamage(float damage)
+    {
+        hurtFlash = true;
+        bossHealth -= damage;
+        SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_BOSS_HIT);
+    }
     
+    void bossFlash()
+    {
+        curFlashTime += Time.deltaTime;
+
+        bossSprite.color = Color.red;
+
+        if(curFlashTime >= hurtFlashTime)
+        {
+            bossSprite.color = Color.white;
+            curFlashTime = 0.0f;
+            hurtFlash = false;
+        }
+    }
 }

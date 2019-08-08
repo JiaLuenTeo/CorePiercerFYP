@@ -5,8 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - PlayerBase
-  - SpawnPoint
-  - EnemyBullet
+  - Walls
+  - Exploding
+  - Boss
+  - Destroyable
+  - 'PlayerBullets '
+  - 'EnemyBullets '
+  - GameManager
+  - PrefabManager
+  - BossDestroyable
   layers:
   - Default
   - TransparentFX
@@ -17,7 +24,7 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - 'Walls '
+  - ReflectionPoints
   - 
   - 
   - 

@@ -53,34 +53,48 @@ public class SoundManagerScript : MonoBehaviour
 	// Preload before any Start() runs in other scripts
 	void Awake () 
 	{
-        Instance = this;
+        if (Instance == null)
+            Instance = this;
+        else
+            Object.Destroy(gameObject);
 
         AudioSource[] audioSourceList = this.GetComponentsInChildren<AudioSource>();
 
-		if(audioSourceList[0].gameObject.name == "BGMAudioSource")
-		{
-			bgmAudioSource = audioSourceList[0];
-			sfxAudioSource = audioSourceList[1];
-		}
-		else 
-		{
-			bgmAudioSource = audioSourceList[1];
-			sfxAudioSource = audioSourceList[0];
-		}
-	}
+        if (audioSourceList[0].gameObject.name == "BGMAudioSource")
+        {
+            bgmAudioSource = audioSourceList[0];
+            sfxAudioSource = audioSourceList[1];
+        }
+        else
+        {
+            bgmAudioSource = audioSourceList[1];
+            sfxAudioSource = audioSourceList[0];
+        }
+    }
 
 	// Use this for initialization
 	void Start () 
 	{
-		PlayBGM(AudioClipID.BGM_GAMEPLAY);
+		//PlayBGM(AudioClipID.BGM_GAMEPLAY);
 
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
-	}
+        if(!bgmAudioSource.isPlaying)
+        {
+            PlayBGM(AudioClipID.BGM_GAMEPLAY);
+            Debug.Log("IS PLAYING BGM");
+        }
+        
+
+        bgmVolume = PlayerPrefs.GetFloat("BGMVolume");
+        bgmAudioSource.volume = bgmVolume;
+
+        sfxVolume = PlayerPrefs.GetFloat("SFXVolume");
+        sfxAudioSource.volume = sfxVolume;
+    }
 	
 	AudioClip FindAudioClip(AudioClipID audioClipID)
 	{
@@ -202,10 +216,12 @@ public class SoundManagerScript : MonoBehaviour
 	public void SetBGMVolume(float value)
 	{
 		bgmVolume = value;
-	}
+        PlayerPrefs.SetFloat("BGMVolume", value);
+    }
 	
 	public void SetSFXVolume(float value)
 	{
 		sfxVolume = value;
-	}
+        PlayerPrefs.SetFloat("SFXVolume", value);
+    }
 }

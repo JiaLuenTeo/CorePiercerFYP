@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossNormalBullet : MonoBehaviour
 {
+    public bool isDestroyable = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,10 @@ public class BossNormalBullet : MonoBehaviour
             Destroy(this.gameObject);
         }
         if (other.gameObject.tag == "Walls")
+        {
+            Destroy(this.gameObject);
+        }
+        if (other.gameObject.tag == "PlayerBullets" && isDestroyable)
         {
             Destroy(this.gameObject);
         }

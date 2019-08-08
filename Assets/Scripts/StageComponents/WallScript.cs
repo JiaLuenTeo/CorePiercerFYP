@@ -10,8 +10,7 @@ public class WallScript : MonoBehaviour
 
     public enum StageState
     {
-        IDLE = 0,
-        STAGE1,
+        STAGE1 = 0,
         STAGE2,
         STAGE3,
         WIN,
@@ -21,16 +20,15 @@ public class WallScript : MonoBehaviour
 
     public StageState curState;
     public StageState preState;
-    public Transform middleDown;
-    public Transform middleUp;
-    public Transform wall12;
-    public Transform wall16;
-    public Transform crossWall;
-    public Transform crossWall_;
-    public Transform cylinder;
-    public Transform cylinder1;
-    public Transform cylinder2;
-    public Transform cylinder3;
+    public Transform StageOne;
+    public Transform StageTwo;
+    public Transform StageTwoWalls;
+    public Transform StageThree;
+
+
+    public float wallRiseSpeed = 10.0f;
+    public float wallFallSpeed = 10.0f;
+    
 
     private void Awake()
     {
@@ -39,8 +37,8 @@ public class WallScript : MonoBehaviour
 
     void Start()
     {
-        curState = StageState.IDLE;
-
+        curState = StageState.STAGE1;
+        preState = curState;
     }
 
 
@@ -49,25 +47,12 @@ public class WallScript : MonoBehaviour
     {
         switch (curState)
         {
-            case StageState.IDLE:
-                CheckStageStatus();
-                break;
-
-            case StageState.STAGE1:
-
-                break;
-
             case StageState.STAGE2:
-                MiddleWallUp();
-                tiles12Down();
+                changeStage("Stage 2");
                 break;
 
             case StageState.STAGE3:
-                tiles16Down();
-                MiddleWallDown();
-                CrossWallUp();
-                CylinderUp();
-
+                changeStage("Stage 3");
                 break;
 
             case StageState.WIN:
@@ -76,14 +61,32 @@ public class WallScript : MonoBehaviour
         }
     }
 
-    void CheckStageStatus()
+    void changeStage(string curStage)
     {
-        preState = curState;
-        curState = StageState.STAGE1;
+        if (curStage == "Stage 2")
+        {
+            if(StageOne.position.y > -4.0f)
+                StageOne.Translate(Vector3.down * wallFallSpeed * Time.deltaTime);
+            if (StageTwo.position.y <= 7.0f)
+                StageTwo.Translate(Vector3.up * wallRiseSpeed * Time.deltaTime);
+            preState = curState;
+        }
+        else if (curStage == "Stage 3")
+        {
+            if (StageTwo.position.y > -4.0f)
+            {
+                StageTwo.Translate(Vector3.down * wallRiseSpeed * Time.deltaTime);
+                StageTwoWalls.Translate(Vector3.down * wallRiseSpeed * Time.deltaTime);
+            }
+            if (StageThree.position.y <= 7.0f)
+                StageThree.Translate(Vector3.up * wallRiseSpeed * Time.deltaTime);
 
+            preState = curState;
+        }
     }
 
-    void MiddleWallUp()
+
+    /*void MiddleWallUp()
     {
         middleDown = this.gameObject.transform.Find("WallMiddleDown");
         if (middleDown.position.y <= 1.4f)
@@ -320,12 +323,7 @@ public class WallScript : MonoBehaviour
 
 
 
-
-
-    void Update()
-    {
-
-    }
+    */
 
 
 }
