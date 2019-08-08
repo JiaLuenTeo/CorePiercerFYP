@@ -32,8 +32,12 @@ public class LoadScenes : MonoBehaviour
         SceneManager.LoadScene("GameScene");
         GameManager.Instance.gameStarted();
         //GameManager.Instance.curState = CurrentGameState.GameStarted;
-        
-        
+    }
+
+    public void LoadTutorial()
+    {
+        GameManager.Instance.curState = CurrentGameState.GameTutorial;
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void LoadOptions()

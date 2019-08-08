@@ -109,6 +109,12 @@ public class PlayerReflectBullet : MonoBehaviour
             //GameObject.Destroy(this.gameObject);
         }
 
+        else if(other.gameObject.tag == "Targets")
+        {
+            GameObject.Destroy(other.gameObject);
+            GameObject.Destroy(this.gameObject);
+        }
+
     }
 
 

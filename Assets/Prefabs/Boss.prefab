@@ -40,6 +40,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3544170950784339381}
   - component: {fileID: 3544170950784339378}
+  - component: {fileID: 6654149729936702192}
   m_Layer: 0
   m_Name: Boss Sprite
   m_TagString: Untagged
@@ -56,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 3544170950784339380}
   m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.85, y: 0.85, z: 1}
+  m_LocalScale: {x: 0.425, y: 0.425, z: 1}
   m_Children: []
   m_Father: {fileID: 3544170951927760376}
   m_RootOrder: 0
@@ -98,17 +99,36 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 80fb6c92629ca8c4281c0e42f7b180c8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c97bf0c7eeb8de742bb0e2ba7b00dcc5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 2.36, y: 2.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &6654149729936702192
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3544170950784339380}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3837441e53a8a4f499cb5e7b7df8afb6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3544170951927760380
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +201,7 @@ MonoBehaviour:
   maxbossHealth: 260
   bossHealth: 100
   bossSprite: {fileID: 3544170950784339378}
+  anim: {fileID: 6654149729936702192}
   normalBulletPrefab: {fileID: 5261060460950708145, guid: 913260ba149389141a53f3a35f6f91ec,
     type: 3}
   destroyableBulletPrefab: {fileID: 5261060460950708145, guid: e30f73f755441fe4096c5b7c1e073a18,

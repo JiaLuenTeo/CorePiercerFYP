@@ -1075,7 +1075,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1807656547}
-        m_MethodName: Instructions
+        m_MethodName: LoadTutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1189,6 +1189,16 @@ PrefabInstance:
     - target: {fileID: 3159571337433814284, guid: a9c6d5d2a4dfca944b07d19daeee6639,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 811703817304199842, guid: a9c6d5d2a4dfca944b07d19daeee6639,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 811703817304199842, guid: a9c6d5d2a4dfca944b07d19daeee6639,
+        type: 3}
+      propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

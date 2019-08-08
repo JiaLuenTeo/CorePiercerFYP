@@ -1,9 +1,10 @@
 Win64
 PlayerPath?
-E:/Unity Projects/PlaytestV2/CorePiercer.exe
+E:/Unity Projects/FinalPlaytest/CorePiercer.exe
 SceneListBegin?
 Assets/Scenes/MainMenu.unity
 Assets/Scenes/Options.unity
+Assets/Scenes/Tutorial.unity
 Assets/Scenes/GameScene.unity
 Assets/Scenes/Instructions.unity
 Assets/Scenes/Credits.unity
@@ -29,7 +30,7 @@ ec0a9c29eed5a172c83b5e24d5dc027e Assembly-CSharp.dll:.SpriteAnimator
 ff81366ffcf483c1d9da36db1e7b62dd Assembly-CSharp.dll:.AOEBulletController
 e7a73f5f78ba6445195ec23b74a1ce2d Unity.TextMeshPro.dll:TMPro.TMP_ScrollbarEventHandler
 c0a9aa2d6ffe0d034853c09d4ad8e837 Assembly-CSharp.dll:.Explode
-4e31c8f3f8f78344b6e47f643b4e3e06 Assembly-CSharp.dll:.displayHUD
+014f5261e46d5603a0f4aae896a979ef Assembly-CSharp.dll:.displayHUD
 cf9f5cf2c3145a37ac07f00e50e460f9 UnityEngine.UI.dll:UnityEngine.UI.AspectRatioFitter
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.UI.dll:UnityEngine.EventSystems.BaseInput
 5fc094978ce3e3591a7500ed380d854a UnityEngine.UI.dll:UnityEngine.UI.Button
@@ -132,7 +133,7 @@ d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.Spa
 7fb9de8dcf73854b6b328eca1f7a6e6d Unity.Analytics.Tracker.dll:UnityEngine.Analytics.AnalyticsTracker
 94017dcc9f00fe671ea7dc427b4da011 Unity.TextMeshPro.dll:TMPro.TMP_SpriteAsset
 cf70efd180d4f011119b4668f0e18284 Assembly-CSharp.dll:.BossExplodingBullet
-7e5f0a490aceec4e6a2f27f6b8ffcf8c Assembly-CSharp.dll:.PlayerMovement
+8ba047a6af177a946091f60e187e4bfd Assembly-CSharp.dll:.PlayerMovement
 c8c5e65e9fb858572516474d6e2102bc Assembly-CSharp.dll:.Paused
 b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 1d357a007e382a0e807567b3463293bb Assembly-CSharp.dll:.TargetDamage
@@ -142,7 +143,7 @@ b3ab2106268377ffe25dd18ac23dca28 Unity.TextMeshPro.dll:TMPro.TMP_Asset
 83e769eee07fc231384c812eedbb8224 Assembly-CSharp.dll:.CameraFollowTutorialVer
 1f6ae3bef9ad8bf996586114f5420ad2 Assembly-CSharp.dll:.WallScript
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.LoadScenes
-ddce484ff52f9d103b8d2d374c93d46c Assembly-CSharp.dll:.BossAI
+bfb282b1e1c37a6844fa6b76bb115b75 Assembly-CSharp.dll:.BossAI
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -187,11 +188,19 @@ f4d66c35ab8e7a48906246e80865fcf4 Assembly-CSharp.dll:.TutorialComplete
 a4f0a4f62100f1a4fb5cbe0e00dde83f Unity.TextMeshPro.dll:TMPro.TextMeshProUGUI
 5fc094978ce3e3591a7500ed380d854a Unity.Analytics.DataPrivacy.dll:UnityEngine.Analytics.DataPrivacyButton
 d251bf88db6c95a6b1aa0b69298da9ef UnityEngine.SpatialTracking.dll:UnityEngine.SpatialTracking.TrackedPoseDriver
-57dc2d2dd6eda0943cd51c306efab507 Assembly-CSharp.dll:.PlayerManager
+888cb0470e97055d1b9d4f46416470b0 Assembly-CSharp.dll:.PlayerManager
 e58a9cc5635d91eac4ff785233577c70 Assembly-CSharp.dll:.FollowCharacter
 d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
-6d37d6c0ef10a5a317784d6e8d4920ad Assembly-CSharp.dll:.PlayerShootLaser
+126c98edefb98f406b2a0aebb393dc87 Assembly-CSharp.dll:.PlayerShootLaser
 c6666661329916e218bee7f5e79e60f5 Unity.TextMeshPro.dll:TMPro.TextMeshPro
 3165968ba45c74472d279ba04455fccb Unity.TextMeshPro.dll:TMPro.TMP_ColorGradient
 8649814970b42d345b89944b862453cc Unity.TextMeshPro.dll:TMPro.TMP_SubMesh
 5a97222050ca08da5f130d39d8b9a1e9 Assembly-CSharp.dll:.spiderMinesTrack
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.TargetDestroy
+4f866760a464596a329cb0596482986b Assembly-CSharp.dll:.PlayerDetected
+af968527c34748cb835c9d2a74108f4d Assembly-CSharp.dll:.TutorialSequence
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.TutorialShootSequence
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.DodgeTriggerSequence
+71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.SceneChange
+ec0a9c29eed5a172c83b5e24d5dc027e Assembly-CSharp.dll:.DashSpriteScripts
+458fe5a1ecc2fea782618b3d80d39cfd Assembly-CSharp.dll:.optionsSearch

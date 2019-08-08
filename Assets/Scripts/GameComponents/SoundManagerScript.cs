@@ -55,7 +55,7 @@ public class SoundManagerScript : MonoBehaviour
 	{
         if (Instance == null)
             Instance = this;
-        else
+        else if (Instance != this)
             Object.Destroy(gameObject);
 
         AudioSource[] audioSourceList = this.GetComponentsInChildren<AudioSource>();
@@ -82,12 +82,16 @@ public class SoundManagerScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-        if(!bgmAudioSource.isPlaying)
+        if(!bgmAudioSource.isPlaying && GameManager.Instance.curState == CurrentGameState.MainMenu)
         {
+            PlayBGM(AudioClipID.BGM_MAIN_MENU);
+            Debug.Log("IS PLAYING BGM");
+        }
+        if (!bgmAudioSource.isPlaying && GameManager.Instance.curState == CurrentGameState.GameCutscene)
+        { 
             PlayBGM(AudioClipID.BGM_GAMEPLAY);
             Debug.Log("IS PLAYING BGM");
         }
-        
 
         bgmVolume = PlayerPrefs.GetFloat("BGMVolume");
         bgmAudioSource.volume = bgmVolume;

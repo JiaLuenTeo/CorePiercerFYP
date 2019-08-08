@@ -6,6 +6,7 @@ using UnityEngine;
 public enum CurrentGameState
 {
     MainMenu,
+    GameTutorial,
     GameCutscene,
     GameCheckCS,
     GameStarted,
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
 
         if (Instance == null)
             Instance = this;
-        else
+        else if (Instance != this)
             Object.Destroy(gameObject);
         
     }
@@ -75,7 +76,9 @@ public class GameManager : MonoBehaviour
 
     public void gameStarted()
     {
+        SoundManagerScript.Instance.StopBGM();
         curState = CurrentGameState.GameCutscene;
+       
     }
 
     public void playCutscene()
@@ -95,6 +98,7 @@ public class GameManager : MonoBehaviour
         {
             mainCameraAnimator.applyRootMotion = true;
             BossAI.Instance.curState = BossAI.BossCurrentState.SHOOTINGNORMAL;
+            
             curState = CurrentGameState.GameStarted;
         }
     }

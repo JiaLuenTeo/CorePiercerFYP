@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{A99A94A0-424F-9506-03B7-266AB81F4AA4}</ProjectGuid>
+    <ProjectGuid>{645E4FB7-CD2E-536B-B02A-08A19F474734}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -73,12 +73,14 @@
     <Compile Include="Assets\Scripts\GameComponents\FollowCharacter.cs" />
     <Compile Include="Assets\Scripts\GameComponents\GameManager.cs" />
     <Compile Include="Assets\Scripts\GameComponents\LoadScenes.cs" />
+    <Compile Include="Assets\Scripts\GameComponents\optionsSearch.cs" />
     <Compile Include="Assets\Scripts\GameComponents\Paused.cs" />
     <Compile Include="Assets\Scripts\GameComponents\SoundManagerScript.cs" />
     <Compile Include="Assets\Scripts\GhostingSprite.cs" />
     <Compile Include="Assets\Scripts\HUDComponenents\AbilityCoolDown.cs" />
     <Compile Include="Assets\Scripts\HUDComponenents\checkGameText.cs" />
     <Compile Include="Assets\Scripts\HUDComponenents\displayHUD.cs" />
+    <Compile Include="Assets\Scripts\PlayerComponents\DashSpriteScripts.cs" />
     <Compile Include="Assets\Scripts\PlayerComponents\PlayerCollisionCheck.cs" />
     <Compile Include="Assets\Scripts\PlayerComponents\PlayerFollowMouse.cs" />
     <Compile Include="Assets\Scripts\PlayerComponents\PlayerManager.cs" />
@@ -89,26 +91,32 @@
     <Compile Include="Assets\Scripts\StageComponents\WallScript.cs" />
     <Compile Include="Assets\Scripts\TutorialComponents\CameraFollowTutorialVer.cs" />
     <Compile Include="Assets\Scripts\TutorialComponents\DashingPractise.cs" />
+    <Compile Include="Assets\Scripts\TutorialComponents\DodgeTriggerSequence.cs" />
     <Compile Include="Assets\Scripts\TutorialComponents\MissionChange.cs" />
     <Compile Include="Assets\Scripts\TutorialComponents\Patrol.cs" />
+    <Compile Include="Assets\Scripts\TutorialComponents\PlayerDetected.cs" />
+    <Compile Include="Assets\Scripts\TutorialComponents\SceneChange.cs" />
     <Compile Include="Assets\Scripts\TutorialComponents\TargetDamage.cs" />
+    <Compile Include="Assets\Scripts\TutorialComponents\TargetDestroy.cs" />
     <Compile Include="Assets\Scripts\TutorialComponents\TargetPractise.cs" />
     <Compile Include="Assets\Scripts\TutorialComponents\TurrentAttack.cs" />
     <Compile Include="Assets\Scripts\TutorialComponents\TutorialComplete.cs" />
+    <Compile Include="Assets\Scripts\TutorialComponents\TutorialSequence.cs" />
+    <Compile Include="Assets\Scripts\TutorialComponents\TutorialShootSequence.cs" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>E:/Unity Projects/CorePiercerDup/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>E:/Unity Projects/CorePiercer/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>E:/Unity Projects/CorePiercerDup/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>E:/Unity Projects/CorePiercer/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>E:/Unity Projects/CorePiercerDup/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>E:/Unity Projects/CorePiercer/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>E:/Unity Projects/CorePiercerDup/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>E:/Unity Projects/CorePiercer/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>E:/Unity Projects/CorePiercerDup/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>E:/Unity Projects/CorePiercer/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -312,13 +320,13 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.5f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>E:/Unity Projects/CorePiercerDup/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>E:/Unity Projects/CorePiercer/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>E:/Unity Projects/CorePiercerDup/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>E:/Unity Projects/CorePiercer/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>E:/Unity Projects/CorePiercerDup/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>E:/Unity Projects/CorePiercer/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2018.3.5f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

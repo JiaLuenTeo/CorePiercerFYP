@@ -9,11 +9,12 @@ public class displayHUD : MonoBehaviour
 
     float flashTime = 0.5f;
     public float curTime = 0.0f;
+    public float curTime2 = 0.0f;
 
     public Image playerHealth;
     public Image bossHealth;
     public Image dashAbilityCD, bounceAbilityCD;
-    public GameObject playerHit;
+    public GameObject playerHit,bossHit;
     public Text timer;
 
     private void Awake()
@@ -30,15 +31,12 @@ public class displayHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         healthFill();
         dashAbilityFill();
         bouncingAbilityFill();
         potraitFlash();
         timerCount();
-        
-
+        bossPotraitFlash();
     }
 
     void healthFill()
@@ -51,6 +49,12 @@ public class displayHUD : MonoBehaviour
     {
         playerHit.gameObject.SetActive(true);
         curTime = 0.0f;
+    }
+
+    public void bossGetHit()
+    {
+        bossHit.gameObject.SetActive(true);
+        curTime2 = 0.0f;
     }
 
     public void dashAbilityFill()
@@ -68,6 +72,16 @@ public class displayHUD : MonoBehaviour
         curTime += Time.deltaTime;
 
         if (curTime >= flashTime)
+        {
+            playerHit.gameObject.SetActive(false);
+        }
+    }
+
+    void bossPotraitFlash()
+    {
+        curTime2 += Time.deltaTime;
+
+        if (curTime2 >= flashTime)
         {
             playerHit.gameObject.SetActive(false);
         }

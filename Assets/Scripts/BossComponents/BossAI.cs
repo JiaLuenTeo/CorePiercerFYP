@@ -36,6 +36,7 @@ public class BossAI : MonoBehaviour
     public float maxbossHealth = 100.0f;
     public float bossHealth = 0.0f;
     public SpriteRenderer bossSprite;
+    public Animator anim;
 
     [Header ("Bullet Settings")]
     public GameObject normalBulletPrefab;
@@ -52,11 +53,15 @@ public class BossAI : MonoBehaviour
     public float shootTimeNormal = 1.0f;
     public float shootTimeRadial = 2.0f;
     public float secondRadialOffset = 10.0f;
+    
 
     public float spinSpeed = 10.0f;
     public float spinTime = 20.0f;
 
     public float RadialDestroyable = 2.0f;
+
+    Vector3 curPos;
+    Vector3 lastPost;
 
     float curShoot = 0.0f;
     public float curGlobalTime = 0.0f;
@@ -80,6 +85,7 @@ public class BossAI : MonoBehaviour
     public float secondStageSwitchTime = 10.0f;
     public float second2ndStageSwitchTime = 10.0f;
     public float finalStageSwitchTime = 15.0f;
+    
 
 
     private void Awake()
@@ -110,18 +116,21 @@ public class BossAI : MonoBehaviour
 
             case BossCurrentState.SHOOTINGNORMAL:
                 MoveToPlayer();
+                BossMoveAnimation();
                 ShootAtPlayer();
                 checkCurrentHealth();
                 break;
 
             case BossCurrentState.SHOOTINGRADIAL:
                 MoveToPlayer();
+                BossMoveAnimation();
                 ShootRadial();
                 checkCurrentHealth();
                 break;
 
             case BossCurrentState.SHOOTING360SHOT:
                 MoveToPlayer();
+                BossMoveAnimation();
                 Shoot360();
                 checkCurrentHealth();
                 break;
@@ -231,6 +240,23 @@ public class BossAI : MonoBehaviour
     void MoveToPlayer()
     {
         bossNavAgent.SetDestination(Player.transform.position);
+    }
+
+    void BossMoveAnimation()
+    {
+        curPos  = transform.localPosition;
+        if (curPos == lastPost)
+        {
+            anim.speed = 1;
+            anim.SetInteger("Move", 0);
+        }
+        else
+        {
+            anim.speed = 1;
+            anim.SetInteger("Move", 1);
+        }
+        lastPost = curPos;
+        
     }
 
     void ShootAtPlayer()
@@ -382,6 +408,7 @@ public class BossAI : MonoBehaviour
     {
         hurtFlash = true;
         bossHealth -= damage;
+        displayHUD.Instance.bossGetHit();
         SoundManagerScript.Instance.PlaySFX(AudioClipID.SFX_BOSS_HIT);
     }
     

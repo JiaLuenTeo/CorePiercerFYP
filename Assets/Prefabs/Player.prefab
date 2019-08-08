@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 364752425}
   - component: {fileID: 364752426}
+  - component: {fileID: 1413283970673785432}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -79,6 +80,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1413283970673785432
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364752424}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 66cdd6d1f6c4bae4e85b431eba730e55, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &781625424
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,7 +189,7 @@ Animator:
   m_GameObject: {fileID: 781625424}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6105ea3b011f1d94fb240d69d79ed5b6, type: 2}
+  m_Controller: {fileID: 9100000, guid: 05c6c54033ddfa940b8254b28b7a595a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -529,10 +549,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437505d59aec3d74599004eef9f9c2e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DashPrefab: {fileID: 7696466132105351546, guid: 3f8416f1f99f98643b9831a24bc6c204,
+    type: 3}
   speed: 5
   dashDistance: 150
   dashTime: 1
   dashCurTime: 10
+  anim: {fileID: 1413283970673785432}
 --- !u!114 &126368803051080328
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +577,7 @@ MonoBehaviour:
   handL: {fileID: 0}
   angle: 0
   angleFix: 0
-  isRight: 1
+  isRight: 0
   isLeft: 0
   isUp: 0
   isDown: 0
@@ -574,6 +597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunSpawnPosition: {fileID: 6015591650448343022}
   gun: {fileID: 126368802355330198}
+  gunSprite: {fileID: 7675893826792301404}
   playerLaser: {fileID: 608673659547163597, guid: d705b01593573b246a76ae11fac147bd,
     type: 3}
   collisionMask:
